@@ -3,28 +3,28 @@
 var connection = require('../config/connection.js');
 
 // Helper function for SQL syntax.
-// function printQuestionMarks(num) {
-//     var arr = [];
+function printQuestionMarks(num) {
+    var arr = [];
 
-//     for (var i = 0; i < num; i++) {
-//         arr.push("?");
-//     }
+    for (var i = 0; i < num; i++) {
+        arr.push("?");
+    }
 
-//     return arr.toString();
-// }
+    return arr.toString();
+}
 
 // Helper function for SQL syntax.
-// function objToSql(ob) {
-//     var arr = [];
+function objToSql(ob) {
+    var arr = [];
 
-//     for (var key in ob) {
-//         if (Object.hasOwnProperty.call(ob, key)) {
-//             arr.push(key + "=" + ob[key]);
-//         }
-//     }
+    for (var key in ob) {
+        if (Object.hasOwnProperty.call(ob, key)) {
+            arr.push(key + "=" + ob[key]);
+        }
+    }
 
-//     return arr.toString();
-// }
+    return arr.toString();
+}
 
 // Object for all our SQL statement functions. selectAll() , insertOne() , updateOne()
 var orm = {
@@ -56,7 +56,7 @@ var orm = {
             cb(result);
         });
     },
-    // An example of objColVals would be {name: panther, sleepy: true}
+
     update: function (table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
 
@@ -74,19 +74,6 @@ var orm = {
             cb(result);
         });
     },
-    // delete: function (table, condition, cb) {
-    //     var queryString = "DELETE FROM " + table;
-    //     queryString += " WHERE ";
-    //     queryString += condition;
-
-    //     connection.query(queryString, function (err, result) {
-    //         if (err) {
-    //             throw err;
-    //         }
-
-    //         cb(result);
-    //     });
-    // }
 };
 
 // Export the ORM object in module.exports.
